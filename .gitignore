@@ -1,0 +1,26 @@
+# Ansible
+*.retry
+ansible/secrets.yml
+ansible/*.vault
+.vault_pass
+
+# Secrets / credentials
+**/secrets*.yml
+!**/secrets*.example.yml
+*.pem
+*.key
+!*.pub
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / temp
+*.log
+tmp/
