@@ -1,0 +1,4 @@
+---
+asterisk_ami_user: "exporter"
+asterisk_ami_password: "SuperSecretPassword123"
+asterisk_sip_password: "SipPassword123!"

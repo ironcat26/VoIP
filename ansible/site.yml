@@ -4,3 +4,10 @@
   become: yes
   roles:
     - node_exporter
+
+
+- name: Deploy Asterisk to VoIP server
+  hosts: voip
+  become: yes
+  roles:
+    - asterisk

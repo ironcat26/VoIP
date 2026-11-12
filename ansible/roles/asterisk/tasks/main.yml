@@ -1,0 +1,42 @@
+---
+- name: Install Asterisk and dependencies
+  ansible.builtin.apt:
+    name:
+      - asterisk
+      - asterisk-core-sounds-en
+      - asterisk-core-sounds-ru
+    state: present
+    update_cache: yes
+
+- name: Copy pjsip.conf
+  ansible.builtin.template:
+    src: pjsip.conf.j2
+    dest: /etc/asterisk/pjsip.conf
+    owner: asterisk
+    group: asterisk
+    mode: '0640'
+  notify: Restart asterisk
+
+- name: Copy extensions.conf
+  ansible.builtin.template:
+    src: extensions.conf.j2
+    dest: /etc/asterisk/extensions.conf
+    owner: asterisk
+    group: asterisk
+    mode: '0640'
+  notify: Restart asterisk
+
+- name: Copy manager.conf
+  ansible.builtin.template:
+    src: manager.conf.j2
+    dest: /etc/asterisk/manager.conf
+    owner: asterisk
+    group: asterisk
+    mode: '0640'
+  notify: Restart asterisk
+
+- name: Ensure Asterisk is started and enabled
+  ansible.builtin.systemd:
+    name: asterisk
+    state: started
+    enabled: yes

@@ -1,0 +1,23 @@
+[transport-udp]
+type=transport
+protocol=udp
+bind=0.0.0.0:5060
+
+[1001]
+type=endpoint
+context=internal
+disallow=all
+allow=ulaw
+allow=alaw
+auth=1001
+aors=1001
+
+[1001]
+type=auth
+auth_type=userpass
+password={{ asterisk_sip_password }}
+username=1001
+
+[1001]
+type=aor
+max_contacts=1
